@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+## Scrapes Holberton intranet to create a log in form
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import sys

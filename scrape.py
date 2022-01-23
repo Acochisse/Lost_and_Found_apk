@@ -5,6 +5,7 @@ import sys
 import json
 import time
 
+
 #cwd = os.path.dirname(os.path.abspath(chromedriver))
 #driver = webdriver.Chrome(executable_path='/home/ac0chisse/Holberton/Projects/Lost_and_Found-apk/chromedriver')
 firefox_options = webdriver.FirefoxOptions()
@@ -17,7 +18,7 @@ def login_form_entry():
             jsondata = json.load(fp)
             print("auth_data found.")
     except IOError:
-        print("Authorization data not found")
+        print("Authorization data not found. Please run ./auth_data.py *Username* *Password*")
         sys.exit()
 
     driver.maximize_window
@@ -30,12 +31,13 @@ def login_form_entry():
     p = driver.find_element_by_name("user[password]")
     p.send_keys(pwd)
     p.send_keys(Keys.RETURN)
-    time.sleep(6)
-    
-    #cal = driver.get("https://intranet.hbtn.io/dashboards/my_planning")
+    time.sleep(3)
     driver.get("https://intranet.hbtn.io/dashboards/my_planning")
-    #cal.send_keys(Keys.DOWN)
-    #cal.send_keys(Keys.DOWN)
+    time.sleep(1)
+    cal = driver.find_element_by_name("day_tab")
+    driver.execute_script("arguments[0].scrollIntoView(true);", cal)
+    time.sleep(180)
+    driver.close
     
 
 if __name__ == '__main__':

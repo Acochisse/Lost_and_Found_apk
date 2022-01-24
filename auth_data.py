@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+## Creates a json file that is used by scrape
 import sys
 import json
 
